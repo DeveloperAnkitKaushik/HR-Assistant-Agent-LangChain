@@ -167,13 +167,6 @@ def main():
         # API Configuration Help
         st.subheader("🔑 API Configuration")
         st.info("""
-        **To use this app, you need to set environment variables:**
-        
-        ```bash
-        GOOGLE_API_KEY=your_google_api_key
-        OPENAI_API_KEY=your_openai_api_key  # Optional
-        ```
-        
         **For deployment platforms:**
         - **Streamlit Cloud**: Add in app settings
         - **Heroku**: Use config vars
