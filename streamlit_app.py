@@ -147,16 +147,38 @@ def main():
     with st.sidebar:
         st.header("🔧 Configuration")
         
-        # API Keys
-        st.subheader("API Keys")
-        google_api_key = st.text_input("Google API Key", type="password", value=os.getenv("GOOGLE_API_KEY", ""))
-        openai_api_key = st.text_input("OpenAI API Key (Optional)", type="password", value=os.getenv("OPENAI_API_KEY", ""))
+        # API Keys (Hidden from users, using environment variables)
+        google_api_key = os.getenv("GOOGLE_API_KEY", "")
+        openai_api_key = os.getenv("OPENAI_API_KEY", "")
         
-        # Set environment variables
+        # Show API key status (but not the actual keys)
         if google_api_key:
-            os.environ["GOOGLE_API_KEY"] = google_api_key
+            st.success("✅ Google API Key: Configured")
+        else:
+            st.error("❌ Google API Key: Not configured")
+            
         if openai_api_key:
-            os.environ["OPENAI_API_KEY"] = openai_api_key
+            st.success("✅ OpenAI API Key: Configured (Optional)")
+        else:
+            st.info("ℹ️ OpenAI API Key: Not configured (Optional)")
+        
+        st.markdown("---")
+        
+        # API Configuration Help
+        st.subheader("🔑 API Configuration")
+        st.info("""
+        **To use this app, you need to set environment variables:**
+        
+        ```bash
+        GOOGLE_API_KEY=your_google_api_key
+        OPENAI_API_KEY=your_openai_api_key  # Optional
+        ```
+        
+        **For deployment platforms:**
+        - **Streamlit Cloud**: Add in app settings
+        - **Heroku**: Use config vars
+        - **Railway**: Use environment variables
+        """)
         
         st.markdown("---")
         
@@ -253,7 +275,7 @@ def main():
             elif not job_requirements.strip():
                 st.error("❌ Please enter job requirements")
             elif not google_api_key:
-                st.error("❌ Please enter Google API Key in the sidebar")
+                st.error("❌ Google API Key not configured. Please set GOOGLE_API_KEY environment variable.")
             else:
                 process_candidate(final_resume_text, job_requirements)
     
