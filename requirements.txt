@@ -1,4 +1,4 @@
-# LangChain HR Assistant Requirements - Fixed Dependencies
+# LangChain HR Assistant Requirements
 langchain==0.1.0
 langchain-openai==0.0.5
 langchain-google-genai==0.0.11
@@ -11,12 +11,12 @@ PyPDF2==3.0.1
 pdfplumber==0.9.0
 python-docx==0.8.11
 
-# Additional utilities - Fixed versions for compatibility
+# Google Sheets Integration
+gspread==5.12.0
+google-auth==2.25.2
+
+# Additional utilities
 openai>=1.10.0,<2.0.0
 google-generativeai>=0.4.1,<0.5.0
 pandas==2.1.4
-plotly==5.17.0
-
-# For enhanced UI
-streamlit-option-menu==0.3.6
-streamlit-lottie==0.0.5 
+plotly==5.17.0 

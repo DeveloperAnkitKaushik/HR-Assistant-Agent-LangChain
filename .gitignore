@@ -2,3 +2,5 @@ __pycache__/
 .venv/
 ARCHITECTURE.md
 .env
+*.json
+service-account-key.json
